@@ -14,7 +14,7 @@ export default class MenuOption extends Component {
   }
 
   render() {
-    const { text, disabled, children, style, customStyles } = this.props;
+    const { text, disabled, children, style, image, customStyles } = this.props;
     if (disabled) {
       const disabledStyles = [defaultStyles.optionTextDisabled, customStyles.optionText];
       return (
@@ -27,8 +27,9 @@ export default class MenuOption extends Component {
       <TouchableHighlight onPress={() => this._onSelect()}
         style={[defaultStyles.option, customStyles.optionWrapper, style]}
         {...defaultTouchableStyles} {...customStyles.optionTouchable}>
-        <View>
-          {text ? <Text style={customStyles.optionText}>{text}</Text> : children}
+        <View style={{flexDirection:'row', justifyContent:'flex-end', alignItems:'center'}}>
+          {image ? children[1] : null}
+          {text ? <Text style={customStyles.optionText}>{text}</Text> : children[0]}
         </View>
       </TouchableHighlight>
     );
@@ -39,6 +40,7 @@ MenuOption.propTypes = {
   disabled: React.PropTypes.bool,
   onSelect: React.PropTypes.func,
   text: React.PropTypes.string,
+  image: React.PropTypes.bool,
   value: React.PropTypes.any,
   customStyles: React.PropTypes.object,
 };
@@ -57,6 +59,7 @@ const defaultStyles = StyleSheet.create({
     padding: 5,
     backgroundColor: 'transparent',
     flex: 1,
+    color: 'red'
   },
   optionTextDisabled: {
     color: '#ccc',
