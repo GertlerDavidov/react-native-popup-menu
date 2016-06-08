@@ -59,7 +59,6 @@ const defaultStyles = StyleSheet.create({
     padding: 5,
     backgroundColor: 'transparent',
     flex: 1,
-    color: 'red'
   },
   optionTextDisabled: {
     color: '#ccc',
