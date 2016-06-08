@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, TouchableHighlight, Text } from 'react-native';
+import { View, TouchableHighlight, Text, Image } from 'react-native';
 import { debug } from './logger.js';
 
 export default class MenuTrigger extends Component {
@@ -18,6 +18,7 @@ export default class MenuTrigger extends Component {
         <TouchableHighlight onPress={onPress} style={[customStyles.triggerWrapper, style]}
           {...defaultTouchableStyles} {...customStyles.triggerTouchable}>
           <View {...other}>
+            {image ? <Image style={customStyles.triggerImage} /> : ''}
             {text ? <Text style={customStyles.triggerText}>{text}</Text> : children}
           </View>
         </TouchableHighlight>
@@ -30,6 +31,7 @@ export default class MenuTrigger extends Component {
 MenuTrigger.propTypes = {
   disabled: React.PropTypes.bool,
   text: React.PropTypes.string,
+  image: React.PropTypes.string,
   onPress: React.PropTypes.func,
   customStyles: React.PropTypes.object,
 };
